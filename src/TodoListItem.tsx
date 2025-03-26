@@ -1,6 +1,4 @@
-import React from 'react';
-
-const TodoListItem = () => {
+export const TodoListItem = () => {
     return (
         <div>
             <h3>What to learn</h3>
@@ -28,4 +26,3 @@ const TodoListItem = () => {
     );
 };
 
-export default TodoListItem;

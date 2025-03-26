@@ -1,5 +1,5 @@
 import './App.css'
-import TodoListItem from "./TodoListItem.tsx";
+import {TodoListItem} from "./TodoListItem.tsx";
 
 function App() {
   return (
