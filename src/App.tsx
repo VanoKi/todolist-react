@@ -1,7 +1,7 @@
 import './App.css'
 import {TodoListItem} from "./TodoListItem.tsx";
 
-function App() {
+const App = () => {
   return (
       <div className="app">
         <TodoListItem />
