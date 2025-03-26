@@ -4,9 +4,9 @@ import {TodoListItem} from "./TodoListItem.tsx";
 const App = () => {
   return (
       <div className="app">
-        <TodoListItem />
-        <TodoListItem />
-        <TodoListItem />
+        <TodoListItem title={'What to learn'}/>
+        <TodoListItem tite={'Songs'}/>
+        <TodoListItem title={'Books'}/>
       </div>
   )
 }

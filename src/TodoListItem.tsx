@@ -1,7 +1,11 @@
-export const TodoListItem = () => {
+type Props = {
+    title: string
+}
+
+export const TodoListItem = (props: Props) => {
     return (
         <div>
-            <h3>What to learn</h3>
+            <h3>{props.title}</h3>
             <div>
                 <input/>
                 <button>+</button>
