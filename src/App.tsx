@@ -1,5 +1,6 @@
 import './App.css'
 import {TodoListItem} from "./TodoListItem.tsx";
+const Day = new Date()
 
 export type Task = {
   id: number
@@ -20,7 +21,7 @@ const App = () => {
     { id: 3, title: 'Yo', isDone: false },
   ]
   return <div className="app">
-    <TodoListItem title={'What to learn'} tasks={tasks1} date={String(new Date())}/>
+    <TodoListItem title={'What to learn'} tasks={tasks1} date={String(Day.toLocaleDateString())}/>
     <TodoListItem title={'Fraces'} tasks={tasks2} />
   </div>
 }
