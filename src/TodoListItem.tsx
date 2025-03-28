@@ -1,24 +1,27 @@
+import {Task} from "./App.tsx";
+
 type Props = {
     title: string
+    tasks: Task[]
 }
 
-export const TodoListItem = (props: Props) => {
+export const TodoListItem = ({ title, tasks }: Props) => {
     return (
         <div>
-            <h3>{props.title}</h3>
+            <h3>{title}</h3>
             <div>
                 <input/>
                 <button>+</button>
             </div>
             <ul>
                 <li>
-                    <input type="checkbox" checked={true}/> <span>HTML&CSS</span>
+                    <input type="checkbox" checked={tasks[0].isDone}/> <span>HTML&CSS</span>
                 </li>
                 <li>
-                    <input type="checkbox" checked={true}/> <span>JS</span>
+                    <input type="checkbox" checked={tasks[1].isDone}/> <span>JS</span>
                 </li>
                 <li>
-                    <input type="checkbox" checked={false}/> <span>React</span>
+                    <input type="checkbox" checked={tasks[2].isDone}/> <span>React</span>
                 </li>
             </ul>
             <div>
