@@ -19,12 +19,10 @@ const App = () => {
     { id: 2, title: 'I am Happy', isDone: false },
     { id: 3, title: 'Yo', isDone: false },
   ]
-  return (
-      <div className="app">
-        <TodoListItem title={'What to learn'} tasks={tasks1}/>
-        <TodoListItem title={'Fraces'} tasks={tasks2}/>
-      </div>
-  )
+  return <div className="app">
+    <TodoListItem title={'What to learn'} tasks={tasks1} date={String(new Date())}/>
+    <TodoListItem title={'Fraces'} tasks={tasks2} />
+  </div>
 }
 
 export default App

@@ -3,9 +3,10 @@ import {Task} from "./App.tsx";
 type Props = {
     title: string
     tasks: Task[]
+    date?: string
 }
 
-export const TodoListItem = ({ title, tasks }: Props) => {
+export const TodoListItem = ({ title, tasks, date }: Props) => {
     return (
         <div>
             <h3>{title}</h3>
@@ -29,6 +30,7 @@ export const TodoListItem = ({ title, tasks }: Props) => {
                 <button>Active</button>
                 <button>Completed</button>
             </div>
+            <div>{date}</div>
         </div>
     );
 };
