@@ -11,7 +11,7 @@ export type Task = {
 }
 
 const App = () => {
-
+  console.log('App render')
   const [tasks, setTasks]= useState<Task[]>([
     { id: 1, title: 'HTML&CSS', isDone: true },
     { id: 2, title: 'JS', isDone: true },
@@ -21,26 +21,33 @@ const App = () => {
     { id: 6, title: 'RTK query', isDone: false },
   ])
 
-  const [filter, setFilter] = useState('all')
-
-  let filtredTasks = tasks
+  const [filter, setFilter] = useState<any>('active')
+  let filteredTasks: Task[] = tasks
+  if (filter === 'all') {
+    // setFilter(tasks)
+    filteredTasks = tasks
+  }
   if (filter === 'active') {
-    filtredTasks = tasks.filter(task => !task.isDone)
+    filteredTasks = tasks.filter( task => task.isDone === false)
   }
-  if (filter === 'completed') {
-    filtredTasks = tasks.filter(task => task.isDone)
-  }
+
+  // let filtredTasks = tasks
+  // if (filter === 'active') {
+  //   filtredTasks = tasks.filter(task => !task.isDone)
+  // }
+  // if (filter === 'completed') {
+  //   filtredTasks = tasks.filter(task => task.isDone)
+  // }
 
   function deleteTask(taskId: number) {
     const filtredTasks = tasks.filter( task => task.id !== taskId)
     console.log(filtredTasks)
     setTasks(filtredTasks)
   }
-
   return <div className="app">
     <TodoListItem
         title={'What to learn'}
-        tasks={tasks}
+        tasks={filteredTasks}
         date={String(Day.toLocaleDateString())}
         deleteTask={deleteTask}
     />
