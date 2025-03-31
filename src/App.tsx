@@ -9,7 +9,7 @@ export type Task = {
 }
 
 const App = () => {
-  let tasks1: Task[] = [
+  let tasks: Task[] = [
     { id: 1, title: 'HTML&CSS', isDone: true },
     { id: 2, title: 'JS', isDone: true },
     { id: 3, title: 'ReactJS', isDone: false },
@@ -19,13 +19,16 @@ const App = () => {
   ]
 
   function deleteTask(taskId: number) {
-    alert(taskId)
+    tasks = tasks.filter(task => {
+      return task.id !== taskId
+    })
+    console.log(tasks)
   }
 
   return <div className="app">
     <TodoListItem
         title={'What to learn'}
-        tasks={tasks1}
+        tasks={tasks}
         date={String(Day.toLocaleDateString())}
         deleteTask={deleteTask}
     />
