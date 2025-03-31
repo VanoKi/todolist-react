@@ -9,6 +9,7 @@ export type Task = {
   title: string
   isDone: boolean
 }
+export type FilterValues = 'all'|'active'|'completed'
 
 const App = () => {
   console.log('App render')
@@ -20,13 +21,9 @@ const App = () => {
     { id: 5, title: 'TypeScript', isDone: false },
     { id: 6, title: 'RTK query', isDone: false },
   ])
-
-  const [filter, setFilter] = useState<any>('completed')
+  const [filter, setFilter] = useState<FilterValues>('all')
   let filteredTasks: Task[] = tasks
-  if (filter === 'all') {
-    // setFilter(tasks)
-    filteredTasks = tasks
-  }
+
   if (filter === 'active') {
     filteredTasks = tasks.filter( task => !task.isDone)
   }
@@ -39,12 +36,18 @@ const App = () => {
     console.log(filtredTasks)
     setTasks(filtredTasks)
   }
+
+  const changeFilter = (filter: FilterValues) => {
+    setFilter(filter)
+  }
+
   return <div className="app">
     <TodoListItem
         title={'What to learn'}
         tasks={filteredTasks}
         date={String(Day.toLocaleDateString())}
         deleteTask={deleteTask}
+        changeFilter={changeFilter}
     />
   </div>
 }
