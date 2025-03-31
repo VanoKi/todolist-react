@@ -21,14 +21,17 @@ const App = () => {
     { id: 6, title: 'RTK query', isDone: false },
   ])
 
-  const [filter, setFilter] = useState<any>('active')
+  const [filter, setFilter] = useState<any>('all')
   let filteredTasks: Task[] = tasks
   if (filter === 'all') {
     // setFilter(tasks)
     filteredTasks = tasks
   }
   if (filter === 'active') {
-    filteredTasks = tasks.filter( task => task.isDone === false)
+    filteredTasks = tasks.filter( task => !task.isDone)
+  }
+  if (filter === 'Completed') {
+    filteredTasks = tasks.filter( task => task.isDone)
   }
 
   // let filtredTasks = tasks
