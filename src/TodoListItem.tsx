@@ -18,6 +18,11 @@ export const TodoListItem = ({ title, tasks, date, deleteTask, changeFilter, cre
     const [taskTitle, setTaskTitle] = useState('')
     const createTaskHandler = () => createTask(taskTitle)
     const isAddBtnDisabled = !taskTitle || taskTitle.length > 10
+    const createTaskOnKeyDownHandler = (e) => {
+        if (e.key === 'Enter' && !isAddBtnDisabled) {
+            createTaskHandler()
+        }
+    }
 
     return (
         <div>
@@ -27,12 +32,7 @@ export const TodoListItem = ({ title, tasks, date, deleteTask, changeFilter, cre
                        placeholder={'enter the text'}
                        value={taskTitle}
                        onChange={(e) => setTaskTitle(e.currentTarget.value)}
-                       onKeyDown={ (e) => {
-                           if (e.key === 'Enter' && !isAddBtnDisabled) {
-                               createTaskHandler()
-                       }
-                       }
-                }
+                       onKeyDown={createTaskOnKeyDownHandler}
                 />
                 <Button
                     title={'+'}
