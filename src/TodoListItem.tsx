@@ -1,7 +1,7 @@
 import {FilterValues, Task} from "./App.tsx";
 import {Button} from "./Button.tsx";
 import * as React from "react";
-import {useState} from "react";
+import {useState, KeyboardEvent} from "react";
 
 type Props = {
     title: string
@@ -16,13 +16,17 @@ export const TodoListItem = ({ title, tasks, date, deleteTask, changeFilter, cre
 
     const taskInputRef = React.useRef<HTMLInputElement>(null)
     const [taskTitle, setTaskTitle] = useState('')
-    const createTaskHandler = () => createTask(taskTitle)
+    const createTaskHandler = () => {
+        createTask(taskTitle)
+        setTaskTitle("")
+    }
     const isAddBtnDisabled = !taskTitle || taskTitle.length > 10
-    const createTaskOnKeyDownHandler = (e) => {
+    const createTaskOnKeyDownHandler = (e: KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter' && !isAddBtnDisabled) {
             createTaskHandler()
         }
     }
+
 
     return (
         <div>
