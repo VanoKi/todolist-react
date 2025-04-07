@@ -22,13 +22,19 @@ export const TodoListItem = ({ title, tasks, date, deleteTask, changeFilter, cre
             <h3>{title}</h3>
             <div>
                 <input ref={taskInputRef}
-                        value={taskTitle}
-                        onChange={(e) => setTaskTitle(e.currentTarget.value)}/>
-                <Button title={'+'} onClick={() => {
+                       placeholder={'enter the text'}
+                       value={taskTitle}
+                       onChange={(e) => setTaskTitle(e.currentTarget.value)}/>
+                <Button
+                    title={'+'}
+                    disabled={!taskTitle || taskTitle.length > 10}
+                    onClick={() => {
                     if (taskInputRef.current) {
                         createTask(taskTitle)
                         // taskInputRef.current.value = ""
                 }}}/>
+                {taskTitle && <div>Max title length is 10 characters</div>}
+                {taskTitle.length > 10 && <div>Max title length is 10 characters</div>}
             </div>
             {tasks.length === 0 ? (
                 <p>There aren't tasks</p>
