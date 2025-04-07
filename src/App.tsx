@@ -6,7 +6,7 @@ import {v1} from 'uuid';
 const Day = new Date()
 
 export type Task = {
-  id: number
+  id: string
   title: string
   isDone: boolean
 }
@@ -15,12 +15,12 @@ export type FilterValues = 'all'|'active'|'completed'
 const App = () => {
   console.log('App render')
   const [tasks, setTasks]= useState<Task[]>([
-    { id: 1, title: 'HTML&CSS', isDone: true },
-    { id: 2, title: 'JS', isDone: true },
-    { id: 3, title: 'ReactJS', isDone: false },
-    { id: 4, title: 'Redux', isDone: false },
-    { id: 5, title: 'TypeScript', isDone: false },
-    { id: 6, title: 'RTK query', isDone: false },
+    { id: v1(), title: 'HTML&CSS', isDone: true },
+    { id: v1(), title: 'JS', isDone: true },
+    { id: v1(), title: 'ReactJS', isDone: false },
+    { id: v1(), title: 'Redux', isDone: false },
+    { id: v1(), title: 'TypeScript', isDone: false },
+    { id: v1(), title: 'RTK query', isDone: false },
   ])
   const [filter, setFilter] = useState<FilterValues>('all')
   let filteredTasks: Task[] = tasks
@@ -42,10 +42,9 @@ const App = () => {
     setFilter(filter)
   }
 
-  const createTask = (title: string, id: number) => {
-    const newTask: Task = {id: v1(), title: title, isDone: false}
-    const nextState: Task[] = [...tasks, newTask]
-    setTasks(nextState)
+  const createTask = (title: string) => {
+    // alert('creating task')
+    setTasks([...tasks, {id: v1(), title, isDone: false}])
   }
 
   return <div className="app">
@@ -55,6 +54,7 @@ const App = () => {
         date={String(Day.toLocaleDateString())}
         deleteTask={deleteTask}
         changeFilter={changeFilter}
+        createTask={createTask}
     />
   </div>
 }
