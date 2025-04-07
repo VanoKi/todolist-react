@@ -1,6 +1,7 @@
 import './App.css';
 import {TodoListItem} from "./TodoListItem.tsx";
 import {useState} from "react";
+import {v1} from 'uuid';
 
 const Day = new Date()
 
@@ -41,8 +42,8 @@ const App = () => {
     setFilter(filter)
   }
 
-  const createTask = () => {
-    const newTask: Task = {id: , title: , isDone: false}
+  const createTask = (title: string, id: number) => {
+    const newTask: Task = {id: v1(), title: title, isDone: false}
     const nextState: Task[] = [...tasks, newTask]
     setTasks(nextState)
   }
