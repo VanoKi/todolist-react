@@ -33,7 +33,9 @@ const App = () => {
   }
 
   function deleteTask(taskId: number) {
-    const filtredTasks = tasks.filter( task => task.id !== taskId)
+    const filtredTasks = tasks.filter( task => {
+      return task.id !== taskId;
+    })
     console.log(filtredTasks)
     setTasks(filtredTasks)
   }

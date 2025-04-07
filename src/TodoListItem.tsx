@@ -7,15 +7,16 @@ type Props = {
     date?: string
     deleteTask: (taskID: number) => void
     changeFilter: (value: FilterValues) => void
+    createTask: (title: string) => void
 }
 
-export const TodoListItem = ({ title, tasks, date, deleteTask, changeFilter }: Props) => {
+export const TodoListItem = ({ title, tasks, date, deleteTask, changeFilter, createTask }: Props) => {
     return (
         <div>
             <h3>{title}</h3>
             <div>
                 <input/>
-                <button>+</button>
+                <button title={'+'} onClick={() => createTask('new task')}/>
             </div>
             {tasks.length === 0 ? (
                 <p>There aren't tasks</p>
