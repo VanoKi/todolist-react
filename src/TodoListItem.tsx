@@ -34,7 +34,7 @@ export const TodoListItem = ({ title, tasks, date, deleteTask, changeFilter, cre
                         // taskInputRef.current.value = ""
                 }}}/>
                 {taskTitle && <div>Max title length is 10 characters</div>}
-                {taskTitle.length > 10 && <div>Max title length is 10 characters</div>}
+                {taskTitle.length > 10 && <div style={{color: "red"}}>title length is more then 10 characters</div>}
             </div>
             {tasks.length === 0 ? (
                 <p>There aren't tasks</p>
