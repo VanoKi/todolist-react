@@ -17,6 +17,7 @@ export const TodoListItem = ({ title, tasks, date, deleteTask, changeFilter, cre
     const taskInputRef = React.useRef<HTMLInputElement>(null)
     const [taskTitle, setTaskTitle] = useState('')
     const createTaskHandler = () => createTask(taskTitle)
+    const isAddBtnDisabled = !taskTitle || taskTitle.length > 10
 
     return (
         <div>
@@ -27,7 +28,7 @@ export const TodoListItem = ({ title, tasks, date, deleteTask, changeFilter, cre
                        value={taskTitle}
                        onChange={(e) => setTaskTitle(e.currentTarget.value)}
                        onKeyDown={ (e) => {
-                           if (e.key === 'Enter') {
+                           if (e.key === 'Enter' && !isAddBtnDisabled) {
                                createTaskHandler()
                        }
                        }
@@ -35,7 +36,7 @@ export const TodoListItem = ({ title, tasks, date, deleteTask, changeFilter, cre
                 />
                 <Button
                     title={'+'}
-                    disabled={!taskTitle || taskTitle.length > 10}
+                    disabled={isAddBtnDisabled}
                     onClick={createTaskHandler}
                 />
                 {taskTitle && <div>Max title length is 10 characters</div>}
