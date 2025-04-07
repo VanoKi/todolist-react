@@ -24,7 +24,7 @@ export const TodoListItem = ({ title, tasks, date, deleteTask, changeFilter, cre
                     if (taskInputRef.current) {
                         createTask(taskInputRef.current.value)
                         taskInputRef.current.value = ""
-                }}>+</button>
+                }}}>+</button>
             </div>
             {tasks.length === 0 ? (
                 <p>There aren't tasks</p>
