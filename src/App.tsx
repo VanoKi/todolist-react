@@ -41,6 +41,12 @@ const App = () => {
     setFilter(filter)
   }
 
+  const createTask = () => {
+    const newTask: Task = {id: , title: , isDone: false}
+    const nextState: Task[] = [...tasks, newTask]
+    setTasks(nextState)
+  }
+
   return <div className="app">
     <TodoListItem
         title={'What to learn'}
