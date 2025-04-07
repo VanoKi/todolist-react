@@ -1,22 +1,30 @@
 import {FilterValues, Task} from "./App.tsx";
 import {Button} from "./Button.tsx";
+import * as React from "react";
 
 type Props = {
     title: string
     tasks: Task[]
     date?: string
-    deleteTask: (taskID: number) => void
+    deleteTask: (taskID: string) => void
     changeFilter: (value: FilterValues) => void
     createTask: (title: string) => void
 }
 
 export const TodoListItem = ({ title, tasks, date, deleteTask, changeFilter, createTask }: Props) => {
+
+    const taskInputRef = React.useRef<HTMLInputElement>(null)
+
     return (
         <div>
             <h3>{title}</h3>
             <div>
-                <input/>
-                <button title={'+'} onClick={() => createTask('new task')}/>
+                <input ref={taskInputRef}/>
+                <button title={'+'} onClick={() => {
+                    if (taskInputRef.current) {
+                        createTask(taskInputRef.current.value)
+                        taskInputRef.current.value = ""
+                }}>+</button>
             </div>
             {tasks.length === 0 ? (
                 <p>There aren't tasks</p>
