@@ -26,12 +26,15 @@ export const TodoListItem = ({
 
     const taskInputRef = React.useRef<HTMLInputElement>(null)
     const [taskTitle, setTaskTitle] = useState('')
+    const [error, setError] = useState<string | null>(null)
     const createTaskHandler = () => {
         const trimmedTask = taskTitle.trim()
         if (trimmedTask !== '') {
             createTask(trimmedTask)
-            setTaskTitle("")
+        } else {
+            setError('Title is required')
         }
+        setTaskTitle("")
     }
     const isAddBtnDisabled = !taskTitle || taskTitle.length > 10
     const createTaskOnKeyDownHandler = (e: KeyboardEvent<HTMLInputElement>) => {
@@ -50,12 +53,14 @@ export const TodoListItem = ({
                        value={taskTitle}
                        onChange={(e) => setTaskTitle(e.currentTarget.value)}
                        onKeyDown={createTaskOnKeyDownHandler}
+                       className={!!error ? 'taskTitle' : ''}
                 />
                 <Button
                     title={'+'}
                     disabled={isAddBtnDisabled}
                     onClick={createTaskHandler}
                 />
+                {error && <div style={{color: 'red'}}>{error}</div>}
                 {taskTitle && <div>Max title length is 10 characters</div>}
                 {taskTitle.length > 10 && <div style={{color: "red"}}>title length is more then 10 characters</div>}
             </div>
