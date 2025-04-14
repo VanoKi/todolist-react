@@ -27,8 +27,11 @@ export const TodoListItem = ({
     const taskInputRef = React.useRef<HTMLInputElement>(null)
     const [taskTitle, setTaskTitle] = useState('')
     const createTaskHandler = () => {
-        createTask(taskTitle)
-        setTaskTitle("")
+        const trimmedTask = taskTitle.trim()
+        if (trimmedTask !== '') {
+            createTask(trimmedTask)
+            setTaskTitle("")
+        }
     }
     const isAddBtnDisabled = !taskTitle || taskTitle.length > 10
     const createTaskOnKeyDownHandler = (e: KeyboardEvent<HTMLInputElement>) => {
