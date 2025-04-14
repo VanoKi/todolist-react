@@ -28,6 +28,10 @@ button, input {
   cursor: pointer;
 }
 
+button {
+  margin: 10px;
+}
+
 button:hover {
   background: #7e7d7d;
 }

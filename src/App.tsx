@@ -49,7 +49,7 @@ const App = () => {
     setTasks([...tasks, {id: v1(), title, isDone: false}])
   }
   
-  const changeTaskStatus = (taskId: string) => {
+  const changeTaskStatus = (taskId: string, newStatus: boolean) => {
     const newTasks = tasks.map( t => t.id === taskId ? {...t, isDone: !t.isDone} : t)
     setTasks(newTasks)
   }
