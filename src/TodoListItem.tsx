@@ -10,9 +10,17 @@ type Props = {
     deleteTask: (taskID: string) => void
     changeFilter: (value: FilterValues) => void
     createTask: (title: string) => void
+    changeTaskStatus: (taskId: string) => void
 }
 
-export const TodoListItem = ({ title, tasks, date, deleteTask, changeFilter, createTask }: Props) => {
+export const TodoListItem = ({
+                                 title,
+                                 tasks,
+                                 date,
+                                 deleteTask,
+                                 changeFilter,
+                                 createTask,
+                                 changeTaskStatus }: Props) => {
 
     const taskInputRef = React.useRef<HTMLInputElement>(null)
     const [taskTitle, setTaskTitle] = useState('')
@@ -52,7 +60,10 @@ export const TodoListItem = ({ title, tasks, date, deleteTask, changeFilter, cre
                 {tasks.map(task => {
                     return (
                         <li key={task.id}>
-                            <input type="checkbox" checked={task.isDone}/>
+                            <input type="checkbox"
+                                   checked={task.isDone}
+                                   onChange={() => changeTaskStatus(task.id)}
+                            />
                             <span>{task.title}</span>
                             <Button title={'x'} onClick={() => deleteTask(task.id)} />
                         </li>

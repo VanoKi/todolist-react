@@ -48,6 +48,11 @@ const App = () => {
     // alert('creating task')
     setTasks([...tasks, {id: v1(), title, isDone: false}])
   }
+  
+  const changeTaskStatus = (taskId: string) => {
+    const newTasks = tasks.map( t => t.id === taskId ? {...t, isDone: !t.isDone} : t)
+    setTasks(newTasks)
+  }
 
   return <div className="app">
     <TodoListItem
@@ -57,6 +62,7 @@ const App = () => {
         deleteTask={deleteTask}
         changeFilter={changeFilter}
         createTask={createTask}
+        changeTaskStatus={changeTaskStatus}
     />
   </div>
 }
