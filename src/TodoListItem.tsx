@@ -11,9 +11,11 @@ type Props = {
     changeFilter: (value: FilterValues) => void
     createTask: (title: string) => void
     changeTaskStatus: (taskId: string, newStatus: boolean) => void
+    filter: string
 }
 
 export const TodoListItem = ({
+                                 filter,
                                  title,
                                  tasks,
                                  date,
@@ -67,16 +69,26 @@ export const TodoListItem = ({
                                    checked={task.isDone}
                                    onChange={changeTaskStatusHandler}
                             />
-                            <span>{task.title}</span>
+                            <span className={task.isDone ? 'task-done' : 'task'}>{task.title}</span>
                             <Button title={'x'} onClick={() => deleteTask(task.id)} />
                         </li>
                     )
                 })}
             </ul>)}
             <div>
-                <Button title={'All'} onClick={() => changeFilter('all')}/>
-                <Button title={'Active'} onClick={() => changeFilter('active')}/>
-                <Button title={'Completed'} onClick={() => changeFilter('completed')}/>
+                <Button
+                    classes={filter === 'all' ? 'filter-btn-active' : ''}
+                    title={'All'}
+                    onClick={() => changeFilter('all')}
+                />
+                <Button
+                    classes={filter === 'active' ? 'filter-btn-active' : ''}
+                    title={'Active'}
+                    onClick={() => changeFilter('active')}/>
+                <Button
+                    classes={filter === 'completed' ? 'filter-btn-active' : ''}
+                    title={'Completed'}
+                    onClick={() => changeFilter('completed')}/>
             </div>
             <div>{date}</div>
         </div>
