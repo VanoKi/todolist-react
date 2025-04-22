@@ -85,13 +85,15 @@ export const App = () => {
 
     return <TodolistItem
       key={t1.id}
+      todolistId={t1.id}
       title={t1.title}
       filter={t1.filter}
-      tasks={t1.}
+      tasks={filteredTasks}
       deleteTask={deleteTask}
       changeFilter={changeFilter}
       createTask={createTask}
       changeTaskStatus={changeTaskStatus}
+      deleteTodoList={deleteTodoList}
       />
   })
 
