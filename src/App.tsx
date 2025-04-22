@@ -84,8 +84,8 @@ export const App = () => {
   }
 
   const changeTaskStatus = (taskId: string, isDone: boolean,  todolistId: string) => {
-    const newState = tasks.map(task => task.id == taskId ? { ...task, isDone } : task)
-    setTasks(newState)
+    // const newState = tasks.map(task => task.id == taskId ? { ...task, isDone } : task)
+    setTasks({...tasks, [todolistId]: tasks[todolistId].map(task => task.id == taskId ? { ...task, isDone } : task)})
   }
 
   return (
