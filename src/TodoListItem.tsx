@@ -54,7 +54,10 @@ export const TodolistItem = (props: Props) => {
 
   return (
       <div>
-        <h3>{title}</h3>
+        <h3>
+          {title}
+          <Button title={'x'} onClick={()=>deleteTodoList(todolistId)}/>
+        </h3>
         <div>
           <input className={error ? 'error' : ''}
                  value={taskTitle}
@@ -91,13 +94,13 @@ export const TodolistItem = (props: Props) => {
         <div>
           <Button className={filter === 'all' ? 'active-filter' : ''}
                   title={'All'}
-                  onClick={() => changeFilter('all')}/>
+                  onClick={() => changeFilter('all', todolistId)}/>
           <Button className={filter === 'active' ? 'active-filter' : ''}
                   title={'Active'}
-                  onClick={() => changeFilter('active')}/>
+                  onClick={() => changeFilter('active', todolistId)}/>
           <Button className={filter === 'completed' ? 'active-filter' : ''}
                   title={'Completed'}
-                  onClick={() => changeFilter('completed')}/>
+                  onClick={() => changeFilter('completed', todolistId)}/>
         </div>
       </div>
   )
