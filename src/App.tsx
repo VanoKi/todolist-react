@@ -12,6 +12,12 @@ export type Task = {
 
 export type FilterValues = 'all' | 'active' | 'completed'
 
+export type Todolist = {
+  id: string
+  title: string
+  filter: FilterValues
+}
+
 export const App = () => {
   const [filter, setFilter] = useState<FilterValues>('all')
 
