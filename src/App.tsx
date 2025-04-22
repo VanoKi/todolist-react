@@ -18,11 +18,14 @@ export type Todolist = {
   filter: FilterValues
 }
 
+export type TaskState = {
+  [todolistId: string]: Task[]
+}
+
 export const App = () => {
   const [todolists, setTodolists] = useState<Todolist[]>([
     {id: v1(), title: 'what to learn', filter: 'all'},
-    {id: v1(), title: 'what to learn', filter: 'all'},
-    {id: v1(), title: 'what to learn', filter: 'all'}
+    {id: v1(), title: 'what to buy', filter: 'all'},
     ]
   )
 
