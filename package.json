@@ -1,5 +1,5 @@
 {
-  "name": "todolist-01",
+  "name": "todolist-05",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -12,7 +12,7 @@
   "dependencies": {
     "react": "19.0.0",
     "react-dom": "19.0.0",
-    "uuid": "^11.1.0"
+    "uuid": "11.0.3"
   },
   "devDependencies": {
     "@types/react": "19.0.2",

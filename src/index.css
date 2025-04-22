@@ -4,7 +4,6 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 1.5rem;
 }
 
 body {
@@ -13,30 +12,12 @@ body {
   min-width: 320px;
   min-height: 100vh;
 
+  display: flex;
   justify-content: center;
   align-items: center;
-
-  background: #e1e1e1;
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
-
-button, input {
-  cursor: pointer;
-}
-
-button {
-  margin: 10px;
-}
-
-button:hover {
-  background: #7e7d7d;
-}
-
-/*li {*/
-/*  display: flex;*/
-/*  justify-content: space-between;*/
-/*}*/
