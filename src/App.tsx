@@ -19,6 +19,13 @@ export type Todolist = {
 }
 
 export const App = () => {
+  const [todolists, setTodolists] = useState<Todolist[]>([
+    {id: v1(), title: 'what to learn', filter: 'all'},
+    {id: v1(), title: 'what to learn', filter: 'all'},
+    {id: v1(), title: 'what to learn', filter: 'all'}
+    ]
+  )
+
   const [filter, setFilter] = useState<FilterValues>('all')
 
   const [tasks, setTasks] = useState<Task[]>([
