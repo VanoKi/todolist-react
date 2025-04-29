@@ -53,11 +53,6 @@ export const App = () => {
         return task.id !== taskId
       })
     })
-    //
-    // const filteredTasks = tasks.filter(task => {
-    //   return task.id !== taskId
-    // })
-    // setTasks(filteredTasks)
   }
 
   const changeFilter = (filter: FilterValues, todolistId: string) => {
