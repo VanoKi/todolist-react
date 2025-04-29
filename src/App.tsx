@@ -3,6 +3,7 @@ import {useState} from 'react'
 import {v1} from 'uuid'
 // @ts-ignore
 import {TodolistItem} from "./TodolistItem"
+import {CreateItemForm} from "./CreateItemForm.tsx";
 
 export type Task = {
   id: string
@@ -86,18 +87,26 @@ export const App = () => {
       filteredTasks = filteredTasks.filter(task => task.isDone)
     }
 
-    return <TodolistItem
-      key={t1.id}
-      todolistId={t1.id}
-      title={t1.title}
-      filter={t1.filter}
-      tasks={filteredTasks}
-      deleteTask={deleteTask}
-      changeFilter={changeFilter}
-      createTask={createTask}
-      changeTaskStatus={changeTaskStatus}
-      deleteTodoList={deleteTodoList}
+    const createTodoList = (title: string) => {
+      const newTodoList: Todolist = {id: v1(), title, filter: 'all'}
+      setTodolists([newTodoList, ...todolists])
+    }
+
+    return <>
+      <CreateItemForm onCreateItem={createTodoList}/>
+      <TodolistItem
+        key={t1.id}
+        todolistId={t1.id}
+        title={t1.title}
+        filter={t1.filter}
+        tasks={filteredTasks}
+        deleteTask={deleteTask}
+        changeFilter={changeFilter}
+        createTask={createTask}
+        changeTaskStatus={changeTaskStatus}
+        deleteTodoList={deleteTodoList}
       />
+    </>
   })
 
   return (
