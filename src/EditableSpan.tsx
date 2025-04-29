@@ -2,6 +2,7 @@ import {ChangeEvent, useState} from "react";
 
 type Props = {
   value: string
+  onChange: (title: string) => void
 }
 
 export const EditableSpan = ({value}: Props) => {
@@ -13,6 +14,7 @@ export const EditableSpan = ({value}: Props) => {
   }
   const turnOffEditMode = () => {
     setIsEditMode(false)
+    onChange(title)
   }
   const changeTitle = (event: ChangeEvent<HTMLInputElement>) => {
     setTitle(event.currentTarget.value)
@@ -24,10 +26,13 @@ export const EditableSpan = ({value}: Props) => {
         <input
           onBlur={turnOffEditMode}
           onChange={changeTitle}
-          value={value}
+          value={title}
           autoFocus />
       ) : (
-        <span onDoubleClick={turnOnEditMode}>{value}</span>)}
+        <span
+          onDoubleClick={turnOnEditMode}>
+          {title}
+        </span>)}
     </>
   );
 };

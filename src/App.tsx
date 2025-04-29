@@ -84,6 +84,14 @@ export const App = () => {
     setTasks({...tasks, [todolistsId]: []})
   }
 
+  const changeTaskTitle = (
+    todolistId: string,
+    taskId: string,
+    title: string
+  ) => {
+    setTasks({...tasks, [todolistId] : tasks[todolistId].map(task=> task.id === taskId ? {...task, title}: task)})
+  }
+
   // UI (view)
   const todoListComponents = todolists.map(t1 => {
     let filteredTasks = tasks[t1.id]
