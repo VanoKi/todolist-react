@@ -32,15 +32,9 @@ export const TodolistItem = (props: Props) => {
   // const [taskTitle, setTaskTitle] = useState('')
   // const [error, setError] = useState<string | null>(null)
 
-  // const createTaskHandler = () => {
-  //   const trimmedTitle = taskTitle.trim()
-  //   if (trimmedTitle !== '') {
-  //     createTask(trimmedTitle, todolistId)
-  //     setTaskTitle('')
-  //   } else {
-  //     setError('Title is required')
-  //   }
-  // }
+  const createTaskHandler = (title: string) => {
+      createTask(title, todolistId)
+  }
 
   // const changeTaskTitleHandler = (event: ChangeEvent<HTMLInputElement>) => {
   //   setTaskTitle(event.currentTarget.value)
@@ -60,7 +54,7 @@ export const TodolistItem = (props: Props) => {
           <Button title={'x'} onClick={()=>deleteTodoList(todolistId)}/>
         </h3>
         <CreateItemForm
-
+          onCreateItem={createTaskHandler}
         />
         {/*<div>*/}
         {/*  <input className={error ? 'error' : ''}*/}

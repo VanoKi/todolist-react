@@ -2,7 +2,7 @@ import {Button} from "./Button.tsx";
 import {ChangeEvent, KeyboardEvent, useState} from "react";
 
 type Props = {
-  ocCreateItem: (title: string) => void
+  onCreateItem: (title: string) => void
 }
 
 export const CreateItemForm = ({onCreateItem}: Props) => {
@@ -37,7 +37,7 @@ export const CreateItemForm = ({onCreateItem}: Props) => {
              value={title}
              onChange={changeItemTitleHandler}
              onKeyDown={createItemOnEnterHandler}/>
-      <Button title={'+'} onClick={createItemOnEnterHandler}/>
+      <Button title={'+'} onClick={createItemHandler}/>
       {error && <div className={'error-message'}>{error}</div>}
     </div>
   );
