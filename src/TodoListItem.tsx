@@ -1,6 +1,7 @@
 import {type ChangeEvent, type KeyboardEvent, useState} from 'react'
 import type {FilterValues, Task} from './App'
 import {Button} from './Button'
+import {CreateItemForm} from "./CreateItemForm.tsx";
 
 type Props = {
   todolistId: string
@@ -28,29 +29,29 @@ export const TodolistItem = (props: Props) => {
     deleteTodoList
   } = props
 
-  const [taskTitle, setTaskTitle] = useState('')
-  const [error, setError] = useState<string | null>(null)
+  // const [taskTitle, setTaskTitle] = useState('')
+  // const [error, setError] = useState<string | null>(null)
 
-  const createTaskHandler = () => {
-    const trimmedTitle = taskTitle.trim()
-    if (trimmedTitle !== '') {
-      createTask(trimmedTitle, todolistId)
-      setTaskTitle('')
-    } else {
-      setError('Title is required')
-    }
-  }
+  // const createTaskHandler = () => {
+  //   const trimmedTitle = taskTitle.trim()
+  //   if (trimmedTitle !== '') {
+  //     createTask(trimmedTitle, todolistId)
+  //     setTaskTitle('')
+  //   } else {
+  //     setError('Title is required')
+  //   }
+  // }
 
-  const changeTaskTitleHandler = (event: ChangeEvent<HTMLInputElement>) => {
-    setTaskTitle(event.currentTarget.value)
-    setError(null)
-  }
-
-  const createTaskOnEnterHandler = (event: KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === 'Enter') {
-      createTaskHandler()
-    }
-  }
+  // const changeTaskTitleHandler = (event: ChangeEvent<HTMLInputElement>) => {
+  //   setTaskTitle(event.currentTarget.value)
+  //   setError(null)
+  // }
+  //
+  // const createTaskOnEnterHandler = (event: KeyboardEvent<HTMLInputElement>) => {
+  //   if (event.key === 'Enter') {
+  //     createTaskHandler()
+  //   }
+  // }
 
   return (
       <div>
@@ -58,14 +59,17 @@ export const TodolistItem = (props: Props) => {
           {title}
           <Button title={'x'} onClick={()=>deleteTodoList(todolistId)}/>
         </h3>
-        <div>
-          <input className={error ? 'error' : ''}
-                 value={taskTitle}
-                 onChange={changeTaskTitleHandler}
-                 onKeyDown={createTaskOnEnterHandler}/>
-          <Button title={'+'} onClick={createTaskHandler}/>
-          {error && <div className={'error-message'}>{error}</div>}
-        </div>
+        <CreateItemForm
+
+        />
+        {/*<div>*/}
+        {/*  <input className={error ? 'error' : ''}*/}
+        {/*         value={taskTitle}*/}
+        {/*         onChange={changeTaskTitleHandler}*/}
+        {/*         onKeyDown={createTaskOnEnterHandler}/>*/}
+        {/*  <Button title={'+'} onClick={createTaskHandler}/>*/}
+        {/*  {error && <div className={'error-message'}>{error}</div>}*/}
+        {/*</div>*/}
         {tasks.length === 0 ? (
             <p>Тасок нет</p>
         ) : (
