@@ -88,11 +88,13 @@ export const App = () => {
     }
 
     const createTodoList = (title: string) => {
+      const todolistsId = v1()
       const newTodoList: Todolist = {id: v1(), title, filter: 'all'}
       setTodolists([newTodoList, ...todolists])
+      setTasks({...tasks, [todolistsId]: []})
     }
 
-    return <>
+    return <div key={t1.id}>
       <CreateItemForm onCreateItem={createTodoList}/>
       <TodolistItem
         key={t1.id}
@@ -106,7 +108,7 @@ export const App = () => {
         changeTaskStatus={changeTaskStatus}
         deleteTodoList={deleteTodoList}
       />
-    </>
+    </div>
   })
 
   return (
