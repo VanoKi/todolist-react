@@ -1,4 +1,5 @@
 import {ChangeEvent, useState} from "react";
+import * as React from "react";
 
 type Props = {
   value: string
@@ -20,11 +21,18 @@ export const EditableSpan = ({value}: Props) => {
     setTitle(event.currentTarget.value)
   }
 
+  const onkeyDownHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      setIsEditMode(false)
+    }
+  }
+
   return (
     <>
       {isEditMode ? (
         <input
           onBlur={turnOffEditMode}
+          onKeyDown={onkeyDownHandler}
           onChange={changeTitle}
           value={title}
           autoFocus />
