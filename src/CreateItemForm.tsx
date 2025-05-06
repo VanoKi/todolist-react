@@ -37,13 +37,14 @@ export const CreateItemForm = ({onCreateItem}: Props) => {
       <TextField
         size='small'
         // className={error ? 'error' : ''}
-        error
+        error={!!error}
+
         value={title}
         onChange={changeItemTitleHandler}
         onKeyDown={createItemOnEnterHandler}
       />
       <Button title={'+'} onClick={createItemHandler} />
-      {error && <div className="error-message">{error}</div>}
+      {/*{error && <div className="error-message">{error}</div>}*/}
     </div>
   );
 };
