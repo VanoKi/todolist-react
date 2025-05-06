@@ -101,7 +101,7 @@ export const TodolistItem = (props: Props) => {
             size='small'
             disableElevation
             onClick={() => changeFilter('active', todolistId)}
-            sx={{m: '0 10px'}}
+            sx={{m: '0 5px'}}
           >
             Active
           </Button>
