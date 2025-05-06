@@ -6,7 +6,7 @@ type Props = {
   onChange: (title: string) => void
 }
 
-export const EditableSpan = ({value}: Props) => {
+export const EditableSpan = ({value, onChange}: Props) => {
 
   const [title, setTitle] = useState(value)
   const [isEditMode, setIsEditMode] = useState(false)
@@ -24,6 +24,9 @@ export const EditableSpan = ({value}: Props) => {
   const onkeyDownHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       setIsEditMode(false)
+    }else if (e.key === 'Escape') {
+      setIsEditMode(false)
+      setTitle(value)
     }
   }
 
