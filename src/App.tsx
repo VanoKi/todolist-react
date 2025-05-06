@@ -3,7 +3,7 @@ import {useState} from 'react'
 import {v1} from 'uuid'
 // @ts-ignore
 import {TodolistItem} from "./TodolistItem"
-import {CreateItemForm} from "./CreateItemForm.tsx";
+import {CreateItemForm} from "./CreateItemForm";
 
 export type Task = {
   id: string
@@ -70,7 +70,7 @@ export const App = () => {
 
   const changeTaskStatus = (taskId: string, isDone: boolean, todolistId: string) => {
     // const newState = tasks.map(task => task.id == taskId ? { ...task, isDone } : task)
-    setTasks({...tasks, [todolistId]: tasks[todolistId].map(task => task.id == taskId ? {...task, isDone} : task)})
+    setTasks({...tasks, [todolistId]: tasks[todolistId].map(task => task.id === taskId ? {...task, isDone} : task)})
   }
 
   const deleteTodoList = (todolistId: string) => {
@@ -119,6 +119,8 @@ export const App = () => {
         createTask={createTask}
         changeTaskStatus={changeTaskStatus}
         deleteTodoList={deleteTodoList}
+        changeTaskTitle={changeTaskTitle}
+        changeTodoListTitle={changeTodoListTitle}
       />
     )
   })
