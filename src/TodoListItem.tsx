@@ -4,6 +4,7 @@ import type {FilterValues, Task} from './App'
 import {CreateItemForm} from "./CreateItemForm.tsx";
 import {EditableSpan} from "./EditableSpan.tsx";
 import Button from '@mui/material/Button'
+import {IconButton} from "@mui/material";
 
 type Props = {
   todolistId: string
@@ -52,7 +53,13 @@ export const TodolistItem = (props: Props) => {
       <div>
         <h3>
           <EditableSpan value={title} onChange={changeTodolistTitleHandler}/>
-          <Button title={'x'} onClick={()=>deleteTodoList(todolistId)}/>
+          {/*<Button title={'x'} onClick={()=>deleteTodoList(todolistId)}/>*/}
+          <IconButton
+            onClick={()=>deleteTodoList(todolistId)}
+          >
+            {/*<HighLightHalfButton></HighLightHalfButton>*/}
+            X
+          </IconButton>
         </h3>
         <CreateItemForm
           onCreateItem={createTaskHandler}
@@ -102,6 +109,7 @@ export const TodolistItem = (props: Props) => {
             disableElevation
             onClick={() => changeFilter('active', todolistId)}
             sx={{m: '0 5px'}}
+            color={filter === 'all' ? 'secondary' : 'primary'}
           >
             Active
           </Button>
