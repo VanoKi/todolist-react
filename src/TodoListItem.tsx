@@ -4,7 +4,7 @@ import type {FilterValues, Task} from './App'
 import {CreateItemForm} from "./CreateItemForm.tsx";
 import {EditableSpan} from "./EditableSpan.tsx";
 import Button from '@mui/material/Button'
-import {Checkbox, IconButton} from "@mui/material";
+import {Checkbox, IconButton, List} from "@mui/material";
 
 type Props = {
   todolistId: string
@@ -67,7 +67,7 @@ export const TodolistItem = (props: Props) => {
         {tasks.length === 0 ? (
             <p>Тасок нет</p>
         ) : (
-            <ul>
+            <List>
               {tasks.map(task => {
                 const deleteTaskHandler = () => {
                   deleteTask(task.id, todolistId)
@@ -98,7 +98,7 @@ export const TodolistItem = (props: Props) => {
                     </li>
                 )
               })}
-            </ul>
+            </List>
         )}
         <div>
           <Button
