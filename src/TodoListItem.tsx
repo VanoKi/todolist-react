@@ -100,7 +100,7 @@ export const TodolistItem = (props: Props) => {
             variant="contained"
             size='small'
             disableElevation
-            onClick={() => changeFilter('all', todolistId)}
+            onClick={() => changeFilter('active', todolistId)}
           >
             Active
           </Button>
@@ -108,7 +108,7 @@ export const TodolistItem = (props: Props) => {
             variant="contained"
             size='small'
             disableElevation
-            onClick={() => changeFilter('all', todolistId)}
+            onClick={() => changeFilter('completed', todolistId)}
           >
             Completed
           </Button>
