@@ -4,6 +4,10 @@ import {v1} from 'uuid'
 // @ts-ignore
 import {TodolistItem} from "./TodolistItem"
 import {CreateItemForm} from "./CreateItemForm";
+import {AppBar, Toolbar} from "@mui/material";
+import Button from '@mui/material/Button'
+import IconButton from '@mui/material/IconButton'
+import MenuIcon from '@mui/icons-material/Menu'
 
 export type Task = {
   id: string
@@ -127,6 +131,14 @@ export const App = () => {
 
   return (
     <div className="app">
+      <AppBar position="static">
+        <Toolbar>
+          <IconButton color="inherit">
+            <MenuIcon />
+          </IconButton>
+          <Button color="inherit">Sign in</Button>
+        </Toolbar>
+      </AppBar>
       <CreateItemForm onCreateItem={createTodoList}/>
       {todoListComponents}
     </div>

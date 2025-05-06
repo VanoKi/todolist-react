@@ -36,7 +36,6 @@ export const CreateItemForm = ({onCreateItem}: Props) => {
     <div>
       <TextField
         size='small'
-        // className={error ? 'error' : ''}
         error={!!error}
         helperText={error}
         value={title}
