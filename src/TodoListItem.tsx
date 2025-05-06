@@ -106,6 +106,7 @@ export const TodolistItem = (props: Props) => {
             size='small'
             disableElevation
             onClick={() => changeFilter('all', todolistId)}
+            color={filter === 'all' ? 'secondary' : 'primary'}
           >
             All
           </Button>
@@ -115,7 +116,7 @@ export const TodolistItem = (props: Props) => {
             disableElevation
             onClick={() => changeFilter('active', todolistId)}
             sx={{m: '0 5px'}}
-            color={filter === 'all' ? 'secondary' : 'primary'}
+            color={filter === 'active' ? 'secondary' : 'primary'}
           >
             Active
           </Button>
@@ -124,6 +125,7 @@ export const TodolistItem = (props: Props) => {
             size='small'
             disableElevation
             onClick={() => changeFilter('completed', todolistId)}
+            color={filter === 'completed' ? 'secondary' : 'primary'}
           >
             Completed
           </Button>
